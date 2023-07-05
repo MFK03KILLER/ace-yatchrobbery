@@ -1,0 +1,37 @@
+<html>
+    <head>
+		<meta charset="UTF-8">
+        <!-- <link href="style.css" rel="stylesheet" type="text/css" /> -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+		<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+		<script src="chart.min.js" type="text/javascript"></script>
+		 <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script> 		
+         <script type="text/javascript">
+            $(function() {
+                /* open the UI for user */
+                window.addEventListener('message', function(event) {
+                    if(event.data.type == "open"){
+                        $("#text").text(event.data.tip);
+                        $('body').css('display', 'block')
+                    } else if (event.data.type == "close"){
+    
+                        $('body').css('display', 'none')
+                    }
+                });
+            });	
+            document.onkeyup = function (data) {
+                if (data.which == 27) { // Escape key
+                    $('body').css('display', 'none')
+                    $.post('https://ace-yachtrobbery/NUIFocusOff', JSON.stringify({}));
+                }
+            };
+            </script>
+	</head>
+    <body style="overflow: hidden; background-color: transparent !important; display: none; font-size: 1.6vh; background-color: rgba(0,0,0,0.75) !important;">	
+		<div class="page">
+            <img id="img" style="margin-left: 33%;margin-top: 15%; width: 59vh !important" src="pieceofpaper.png">
+            <p id="text" style="margin-left: 44%;margin-top: -17% !important;font-size: 10vh;">ALO</p>
+		</div>
+
+    </body>
+</html>
